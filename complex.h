@@ -12,37 +12,32 @@
 //
 //********************************************************************
 #include <tuple>
-using std::tuple;
-
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+using namespace std;
 class complex {
-    friend std::ostream& operator<<(std::ostream&, const Rational&);
-    friend std::istream& operator>>(std::istream&, Rational&);
+    friend std::ostream& operator<<(std::ostream&, const complex&);
+    friend std::istream& operator>>(std::istream&, complex&);
 
     double real;
     double imag;
 public:
     complex(double = 0, double = 0);
     void set_complex(double, double);
-    tuple<double, double> get_complex() const
+    tuple<double, double> get_complex() const;
     void set_real(double);
     double get_real();
     void set_imaginary(double);
     double get_imaginary();
 
-    Rational operator+(const Rational&) const;
-    Rational operator-(const Rational&) const;
-    Rational operator*(const Rational&) const;
-    Rational operator/(const Rational&) const;
-
-    Rational operator+(int) const;                      
-            
+    complex operator+(const complex&) const;
+    complex operator*(const complex&) const;
+ 
     // Overloaded relational operators
-    bool operator==(const Rational&) const;
-    bool operator<(const Rational&) const;
-    bool operator<=(const Rational&) const;
-    bool operator>(const Rational&) const;
-    bool operator>=(const Rational&) const;
-    bool operator!=(const Rational&) const;
+    bool operator==(const complex&) const;
+    ostream& operator<<(ostream& os, const complex& obj);
+    istream & operator>>(istream& is, complex& obj);
 }
 
 #endif
