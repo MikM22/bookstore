@@ -17,27 +17,26 @@
 #include <sstream>
 using namespace std;
 class complex {
-    friend std::ostream& operator<<(std::ostream&, const complex&);
-    friend std::istream& operator>>(std::istream&, complex&);
+    friend ostream& operator<<(ostream&, const complex&);
+    friend istream& operator>>(istream&, complex&);
 
-    double real;
-    double imag;
 public:
     complex(double = 0, double = 0);
     void set_complex(double, double);
     tuple<double, double> get_complex() const;
     void set_real(double);
-    double get_real();
+    double get_real() const;
     void set_imaginary(double);
-    double get_imaginary();
+    double get_imaginary() const;
 
     complex operator+(const complex&) const;
     complex operator*(const complex&) const;
  
     // Overloaded relational operators
     bool operator==(const complex&) const;
-    ostream& operator<<(ostream& os, const complex& obj);
-    istream & operator>>(istream& is, complex& obj);
-}
+private:
+    double real{0};
+    double imag{0};
+};
 
 #endif
